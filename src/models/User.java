@@ -1,3 +1,7 @@
+package models;
+
+import java.util.UUID;
+
 /**
  * Created by Leonardo on 9/19/2016.
  */
@@ -10,14 +14,14 @@ public abstract class User {
     protected String userName;
     protected String password;
 
-    protected String UUID;
+    protected UUID UUID;
 
-    public User(String firstName, String lastName, String email, String phone, String uuid) {
+    public User(String firstName, String lastName, String email, String phone) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.email = email;
         this.phone = phone;
-        this.UUID = uuid;
+        this.UUID =  UUID.randomUUID();
     }
 
     public String getFullName() {

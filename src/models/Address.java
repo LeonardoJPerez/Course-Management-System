@@ -1,3 +1,5 @@
+package models;
+
 /**
  * Created by Leonardo on 9/19/2016.
  */
@@ -72,6 +74,4 @@ public class Address {
     public String getCountry() {
         return this.country;
     }
-
-
 }
