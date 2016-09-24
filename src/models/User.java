@@ -24,6 +24,10 @@ public abstract class User {
         this.UUID =  UUID.randomUUID();
     }
 
+    public UUID getUUID() {
+        return this.UUID;
+    }
+
     public String getFullName() {
         StringBuilder sb = new StringBuilder();
         sb.append(this.firstName);
