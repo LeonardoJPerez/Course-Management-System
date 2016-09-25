@@ -1,6 +1,6 @@
-package models;
+package cms.core.models;
 
-import enumerations.CourseType;
+import cms.core.enumerations.CourseType;
 
 import java.util.UUID;
 
@@ -22,7 +22,7 @@ public class Course {
         }
 
         if (instructor == null){
-            throw new IllegalArgumentException("models.Instructor cannot be null.");
+            throw new IllegalArgumentException("core.models.Instructor cannot be null.");
         }
 
         this.courseId = UUID.randomUUID();

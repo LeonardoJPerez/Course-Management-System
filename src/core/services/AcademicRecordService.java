@@ -1,7 +1,7 @@
-package services;
+package cms.core.services;
 
-import models.AcademicRecord;
-import models.Student;
+import cms.core.models.AcademicRecord;
+import cms.core.models.Student;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,18 +9,18 @@ import java.util.List;
 /**
  * Created by Leonardo on 9/24/2016.
  */
-public class AcademicRecordManager {
+public class AcademicRecordService {
 
-    private static AcademicRecordManager _instance;
+    private static AcademicRecordService _instance;
     private List<AcademicRecord> records;
 
-    private AcademicRecordManager() {
+    private AcademicRecordService() {
         this.records = new ArrayList<AcademicRecord>();
     }
 
-    public static AcademicRecordManager getInstance() {
+    public static AcademicRecordService getInstance() {
         if (_instance == null) {
-            _instance = new AcademicRecordManager();
+            _instance = new AcademicRecordService();
         }
 
         return _instance;

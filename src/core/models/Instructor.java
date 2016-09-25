@@ -1,4 +1,4 @@
-package models;
+package cms.core.models;
 
 /**
  * Created by Leonardo on 9/23/2016.

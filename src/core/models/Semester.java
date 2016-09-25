@@ -1,6 +1,6 @@
-package models;
+package cms.core.models;
 
-import enumerations.SemesterName;
+import cms.core.enumerations.SemesterName;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -41,6 +41,14 @@ public class Semester {
 
     public List<Course> getCurrentCourses(){
         return this.courses;
+    }
+
+    public boolean addCourse(Course course){
+        // check null
+        // Check limit.
+        // Add course
+
+        return false;
     }
 
     public List<Instructor> getActiveInstructors(){

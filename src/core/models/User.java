@@ -1,4 +1,4 @@
-package models;
+package cms.core.models;
 
 import java.util.UUID;
 

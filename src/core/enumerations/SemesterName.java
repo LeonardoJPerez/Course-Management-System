@@ -1,4 +1,4 @@
-package enumerations;
+package cms.core.enumerations;
 
 /**
  * Created by Leonardo on 9/23/2016.

@@ -1,7 +1,6 @@
-package models;
+package cms.core.models;
 
-import enumerations.CourseGrade;
-import enumerations.CourseType;
+import cms.core.enumerations.CourseGrade;
 
 import java.util.UUID;
 

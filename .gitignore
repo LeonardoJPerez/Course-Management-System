@@ -12,3 +12,5 @@
 hs_err_pid*
 OMSCS6310_Assignment3_Fall2016_test_cases/
 workspace.xml
+/out
+/test
