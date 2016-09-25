@@ -1,20 +1,20 @@
 package cms.importer;
 
 import cms.core.models.Address;
-import cms.core.models.Instructor;
 import cms.core.models.Student;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Leonardo on 9/24/2016.
  */
-public class InstructorImport  extends BaseImport {
+public class StudentImport extends BaseImport {
 
-    private List<Instructor> instructors;
+    private List<Student> students;
 
-    public InstructorImport(String importFilePath) {
+    public StudentImport(String importFilePath) {
         super(importFilePath);
     }
 
@@ -22,7 +22,7 @@ public class InstructorImport  extends BaseImport {
     public void process() {
         try {
             List<String> lines = this.readFile();
-            this.instructors = new ArrayList<Instructor>();
+            this.students = new ArrayList<Student>();
 
             for (String l : lines) {
                 if (l.length() <= 1) {
@@ -34,10 +34,10 @@ public class InstructorImport  extends BaseImport {
                     continue;
                 }
 
-                // Extract Instructor Unique ID.
+                // Extract Student Unique ID.
                 String id = values[0];
 
-                // Extract Instructor Name.
+                // Extract Student Name.
                 String name = values[1];
                 String firstName;
                 String lastName = "";
@@ -50,25 +50,33 @@ public class InstructorImport  extends BaseImport {
                     firstName = name;
                 }
 
-                // Extract Instructor Address.
-                Address address = this.buildAddress( values[2]);
+                // Extract Student Address.
+                String addressStr = values[2];
+                Address address = null;
+                if (addressStr.length() > 0) {
+                    String[] splitted = addressStr.split(" ");
+                    String zipCode = splitted[splitted.length - 1].trim();
+                    String line1 = addressStr.replace(zipCode, "").trim();
 
-                // Extract Instructor Phone.
+                    address = new Address(line1, "", "", zipCode, "US");
+                }
+
+                // Extract Student Phone.
                 String phoneNumber = "";
                 if (values[3].length() == 10) {
                     phoneNumber = values[3].trim();
                 }
 
-                Instructor instructor = new Instructor(firstName, lastName, "", phoneNumber, id);
-                instructor.setAddress(address);
-                this.instructors.add(instructor);
+                Student newStudent = new Student(firstName, lastName, "", phoneNumber, true, id);
+                newStudent.setAddress(address);
+                this.students.add(newStudent);
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
 
-    public List<Instructor> getInstructors() {
-        return this.instructors;
+    public List<Student> getStudents() {
+        return this.students;
     }
 }

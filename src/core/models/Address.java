@@ -24,13 +24,14 @@ public class Address {
         StringBuilder sb = new StringBuilder();
         sb.append(this.addressLine1);
 
-        if (this.addressLine1 != null && this.addressLine1.length() > 0) {
-            sb.append(" " + this.addressLine1);
+        if (this.addressLine2 != null && this.addressLine2.length() > 0) {
+            sb.append(" " + this.addressLine2);
         }
 
-        sb.append(", " + this.city);
-        sb.append(" " + this.state);
-        sb.append(" " + this.city);
+        if (this.city != null && this.city.length() > 0) { sb.append(", " + this.city); }
+        if (this.state != null && this.state.length() > 0) { sb.append(" " + this.state); }
+        if (this.country != null && this.country.length() > 0) { sb.append(" " + this.country); }
+        if (this.zipCode != null && this.zipCode.length() > 0) { sb.append(" " + this.zipCode); }
 
         return sb.toString();
     }

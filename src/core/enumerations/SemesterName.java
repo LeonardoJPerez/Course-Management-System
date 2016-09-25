@@ -7,5 +7,6 @@ public enum SemesterName {
     Fall,
     Winter,
     Spring,
-    Summer
+    Summer,
+    NoSemester
 }

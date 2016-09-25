@@ -3,9 +3,9 @@ package cms.importer;
 /**
  * Created by Leonardo on 9/24/2016.
  */
-public class EmployeeImport  extends BaseImport {
+public class AcademicRecordImport extends BaseImport {
 
-    public EmployeeImport(String importFilePath) {
+    public AcademicRecordImport(String importFilePath) {
         super(importFilePath);
     }
 

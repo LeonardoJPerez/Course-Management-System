@@ -1,7 +1,9 @@
 package cms.core.models;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Leonardo on 9/19/2016.
@@ -13,12 +15,28 @@ public class Student
     private List<WorkSchedule> workHours;
     private boolean isOnline;
 
-    public Student(String firstName, String lastName, String email, String phone, boolean isOnline) {
-        super(firstName, lastName, email, phone);
+    public Student(String firstName, String lastName, String email, String phone, boolean isOnline, String id) {
+        super(firstName, lastName, email, phone, id);
 
         this.isOnline = isOnline;
         this.workHours = new ArrayList<WorkSchedule>();
     }
+
+    @Override
+    public String toString() {
+        MessageFormat fmt;
+        Object[] values;
+        if (this.address == null) {
+            fmt = new MessageFormat("[{0}] {1} - Phone: {2} - Online: {3}");
+            values = new Object[]{this.getUUID(), this.getFullName(), this.getPhone(), this.isOnline()};
+        } else {
+            fmt = new MessageFormat("[{0}] {1} - Address: {2} - Phone: {3} - Online: {4}");
+            values = new Object[]{this.getUUID(), this.getFullName(), this.getAddress().getFullAddress(), this.getPhone(), this.isOnline()};
+        }
+
+        return fmt.format(values);
+    }
+
 
     public void setAddress(Address address) {
         this.address = address;
@@ -85,7 +103,9 @@ public class Student
             }
         }
 
-        if (index == -1) { return; }
+        if (index == -1) {
+            return;
+        }
         this.workHours.remove(index);
     }
 }

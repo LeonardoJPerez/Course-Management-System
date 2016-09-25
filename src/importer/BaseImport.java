@@ -1,5 +1,7 @@
 package cms.importer;
 
+import cms.core.models.Address;
+
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -31,5 +33,19 @@ public abstract class BaseImport {
         }
 
         return lines;
+    }
+
+    protected Address buildAddress(String addressStr){
+
+        Address address = null;
+        if (addressStr.length() > 0) {
+            String[] splitted = addressStr.split(" ");
+            String zipCode = splitted[splitted.length - 1].trim();
+            String line1 = addressStr.replace(zipCode, "").trim();
+
+            address = new Address(line1, "", "", zipCode, "US");
+        }
+
+        return address;
     }
 }

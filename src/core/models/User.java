@@ -2,6 +2,8 @@ package cms.core.models;
 
 import java.util.UUID;
 
+import static java.util.UUID.randomUUID;
+
 /**
  * Created by Leonardo on 9/19/2016.
  */
@@ -14,17 +16,22 @@ public abstract class User {
     protected String userName;
     protected String password;
 
-    protected UUID UUID;
+    protected String UUID;
 
-    public User(String firstName, String lastName, String email, String phone) {
+    public User(String firstName, String lastName, String email, String phone, String id) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.email = email;
         this.phone = phone;
-        this.UUID =  UUID.randomUUID();
+
+        this.UUID = id;
+        if (this.UUID == null){
+            UUID _UUID =  randomUUID();
+            this.UUID =  _UUID.toString();
+        }
     }
 
-    public UUID getUUID() {
+    public String getUUID() {
         return this.UUID;
     }
 

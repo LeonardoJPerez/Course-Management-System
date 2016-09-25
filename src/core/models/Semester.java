@@ -36,17 +36,34 @@ public class Semester {
     }
 
     public String getFullName(){
-        return this.name.toString() + " - " + this.year;
+        if (this.getSemesterName() == SemesterName.NoSemester){
+            return "N/A";
+        }else {
+            return this.name.toString() + "/" + this.year;
+        }
     }
 
     public List<Course> getCurrentCourses(){
         return this.courses;
     }
 
-    public boolean addCourse(Course course){
-        // check null
-        // Check limit.
-        // Add course
+    public boolean addCourse(Course newCourse){
+         if(newCourse == null){
+             throw new IllegalArgumentException("Course cannot be null.");
+         }
+
+         boolean exists = false;
+        for (Course c: this.courses) {
+            if (newCourse.getCourseId() == c.getCourseId()){
+                exists = true;
+                break;
+            }
+        }
+
+        if (!exists){
+            this.courses.add(newCourse);
+            return true;
+        }
 
         return false;
     }
