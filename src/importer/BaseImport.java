@@ -15,6 +15,7 @@ import java.util.List;
 public abstract class BaseImport {
 
     private String importFilePath;
+    private int lineCount;
 
     public BaseImport(String importFilePath){
         this.importFilePath = importFilePath;
@@ -32,6 +33,7 @@ public abstract class BaseImport {
             System.out.println(e);
         }
 
+        this.lineCount = lines.size();
         return lines;
     }
 
@@ -47,5 +49,9 @@ public abstract class BaseImport {
         }
 
         return address;
+    }
+
+    protected int getLineCount() {
+        return lineCount;
     }
 }

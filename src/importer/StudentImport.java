@@ -51,15 +51,7 @@ public class StudentImport extends BaseImport {
                 }
 
                 // Extract Student Address.
-                String addressStr = values[2];
-                Address address = null;
-                if (addressStr.length() > 0) {
-                    String[] splitted = addressStr.split(" ");
-                    String zipCode = splitted[splitted.length - 1].trim();
-                    String line1 = addressStr.replace(zipCode, "").trim();
-
-                    address = new Address(line1, "", "", zipCode, "US");
-                }
+                Address address = this.buildAddress( values[2]);
 
                 // Extract Student Phone.
                 String phoneNumber = "";

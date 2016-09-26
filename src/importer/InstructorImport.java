@@ -25,10 +25,6 @@ public class InstructorImport  extends BaseImport {
             this.instructors = new ArrayList<Instructor>();
 
             for (String l : lines) {
-                if (l.length() <= 1) {
-                    continue;
-                }
-
                 String[] values = l.split(",");
                 if (values.length != 4) {
                     continue;

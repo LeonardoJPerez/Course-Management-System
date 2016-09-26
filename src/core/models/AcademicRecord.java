@@ -2,6 +2,7 @@ package cms.core.models;
 
 import cms.core.enumerations.CourseGrade;
 
+import java.text.MessageFormat;
 import java.util.UUID;
 
 /**
@@ -17,7 +18,7 @@ public class AcademicRecord {
     private String comments;
     private UUID id;
 
-    public AcademicRecord(Course course, CourseGrade grade, Semester semester, Student student){
+    public AcademicRecord(Course course, CourseGrade grade, Semester semester, Student student, Instructor instructor){
         if (course == null){
             throw new IllegalArgumentException("Course cannot be null.");
         }
@@ -34,6 +35,7 @@ public class AcademicRecord {
         this.semester = semester;
         this.course = course;
         this.student = student;
+        this.instructor = instructor;
         this.grade = grade;
     }
 
@@ -94,5 +96,20 @@ public class AcademicRecord {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        MessageFormat fmt;
+        Object[] values;
+        if (this.comments != null && this.comments.length() > 0) {
+            fmt = new MessageFormat("[{0}] Course ID: {1} - Student ID: {2} - Instructor ID: {3} - Grade: {4} - Comments: {5}");
+            values = new Object[]{this.getId(), this.getCourse().getCourseId(), this.getStudent().getUUID(), this.getInstructor().getUUID(), this.getGrade(), this.comments};
+        } else {
+            fmt = new MessageFormat("[{0}] Course ID: {1} - Student ID: {2} - Instructor ID: {3} - Grade: {4}");
+            values = new Object[]{this.getId(), this.getCourse().getCourseId(), this.getStudent().getUUID(), this.getInstructor().getUUID(), this.getGrade()};
+        }
+
+        return fmt.format(values);
     }
 }

@@ -1,6 +1,8 @@
 package cms.core.models;
 
 import cms.core.enumerations.CourseType;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.util.UUID;
 
@@ -69,5 +71,19 @@ public class Course {
         }else{
             return this.title;
         }
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(19, 59).append(this.courseId).append(this.description).toHashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Course)){ return false; }
+        if (obj == this){ return true; }
+
+        Course course = (Course) obj;
+        return new EqualsBuilder().append(this.courseId, course.courseId).append(this.description, course.description).isEquals();
     }
 }

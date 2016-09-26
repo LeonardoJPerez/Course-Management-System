@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Course-Management-System:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Course_Management_System_jar</output-path>
+    <root id="archive" name="refimp_assign3.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/out/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="Course-Management-System" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/commons-lang3-3.3.2.jar" path-in-jar="/" />
+      <element id="library" level="project" name="org.apache.commons:commons-lang3:3.3.2" />
+    </root>
+  </artifact>
+</component>

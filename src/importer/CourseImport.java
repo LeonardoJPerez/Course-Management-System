@@ -2,14 +2,11 @@ package cms.importer;
 
 import cms.core.enumerations.CourseType;
 import cms.core.enumerations.SemesterName;
-import cms.core.models.Address;
+
 import cms.core.models.Course;
 import cms.core.models.Semester;
-import cms.core.models.Student;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Leonardo on 9/24/2016.
@@ -37,12 +34,8 @@ public class CourseImport extends BaseImport {
         try {
             List<String> lines = this.readFile();
             for (String l : lines) {
-                if (l.length() < 1) {
-                    continue;
-                }
-
                 String[] values = l.split(",");
-                if (values.length < 2){
+                if (values.length < 1){
                     // Minimum amount of data required not met.
                     continue;
                 }
@@ -97,7 +90,24 @@ public class CourseImport extends BaseImport {
         }
     }
 
-    public List<Semester> getCourses() {
+    public List<Semester> getSemesters() {
         return this.semesters;
+    }
+
+    public List<Course> getCourses() {
+        List<Course> courses = new ArrayList<Course>();
+
+        for (Semester s: this.semesters) {
+            courses.addAll(s.getCurrentCourses());
+        }
+
+        List<Course> courses2 = new ArrayList<Course>();
+        for (Course c: courses) {
+            if (!courses2.contains(c)){
+                courses2.add(c);
+            }
+        }
+
+        return courses2;
     }
 }

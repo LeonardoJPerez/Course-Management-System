@@ -32,7 +32,7 @@ public abstract class User {
     }
 
     public String getUUID() {
-        return this.UUID;
+        return this.UUID.toString();
     }
 
     public String getFullName() {
