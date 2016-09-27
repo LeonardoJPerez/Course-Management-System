@@ -59,8 +59,8 @@ public class EntryPoint {
             count += s.getCurrentCourses().size();
         }
 
-        System.out.println("Courses extracted: " + count);
-        System.out.println("Unique Courses extracted: " + courses.size());
+        //System.out.println("Courses extracted: " + count);
+        //System.out.println("Unique Courses extracted: " + courses.size());
     }
 
     private static void ProcessInstructors(){
