@@ -11,15 +11,29 @@ public class WorkSchedule {
 
     public WorkSchedule(){}
 
+
+    // Setters / Getters
     public String getDay(){
         return this.day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
     }
 
     public Integer getFromHour(){
         return this.fromHour;
     }
 
+    public void setFromHour(Integer fromHour) {
+        this.fromHour = fromHour;
+    }
+
     public Integer getToHour(){
         return this.toHour;
+    }
+
+    public void setToHour(Integer toHour) {
+        this.toHour = toHour;
     }
 }

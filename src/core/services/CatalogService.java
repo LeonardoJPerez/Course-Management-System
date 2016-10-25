@@ -28,14 +28,13 @@ public class CatalogService {
         return _instance;
     }
 
-
-    public void addCourse(Course course, UUID semesterId){}
-    public void removeCourse(UUID courseId, UUID semesterId){}
-    public void updateCourse(Course course, UUID semesterId){}
+    public void addCourse(Course course, String semesterId){}
+    public void removeCourse(String courseId, String semesterId){}
+    public void updateCourse(Course course, String semesterId){}
     public void getCourseCount(){}
-    public void getCourse(UUID courseId){}
+    public void getCourse(String courseId){}
 
-    public void getSemester(UUID semesterId){}
+    public void getSemester(String semesterId){}
 
     public void searchCourse(String searchTerm){}
 
@@ -45,7 +44,7 @@ public class CatalogService {
     public void setCurrentSemester(Semester semester){
         this.currentSemester = semester;
     }
-    public void getSemesterCourses(UUID semesterId){
+    public void getSemesterCourses(String semesterId){
 
     }
     public void addSemesterCourses(Semester semester){}

@@ -47,6 +47,8 @@ public abstract class User {
         return sb.toString();
     }
 
+
+    // Setters / Getters
     public void setFirstName(String name) {
         this.firstName = name;
     }

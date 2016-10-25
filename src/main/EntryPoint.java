@@ -15,11 +15,11 @@ import java.util.List;
  */
 public class EntryPoint {
 
-    //private static String filePath = "C:\\Source\\CS6310\\Course-Management-System\\OMSCS6310_Assignment3_Fall2016_test_cases\\test_case_0\\";
-    private static String filePath = "";
+    //private static String _filePath = "C:\\Source\\CS6310\\Course-Management-System\\OMSCS6310_Assignment3_Fall2016_test_cases\\test_case_0\\";
+    private static String _filePath = "";
+    private static boolean _verbose = false;
 
     private static List<Semester> semesters;
-
     private static List<Student> students;
     private static List<Instructor> instructors;
     private static List<Course> courses;
@@ -27,64 +27,45 @@ public class EntryPoint {
 
     public static void main(String[] args) {
 
+        if (args.length > 0 && args[0].equals("-v")){ _verbose = true; }
+
         ProcessStudents();
         ProcessCourses();
         ProcessInstructors();
         ProcessAcademicRecords();
 
         PrintResults();
+
+        if (_verbose) { PrintVerbose(); }
     }
 
     private static void ProcessStudents(){
-        StudentImport studentImporter = new StudentImport(filePath + "students.csv");
+        StudentImport studentImporter = new StudentImport(_filePath + "students.csv");
         studentImporter.process();
 
         students = studentImporter.getStudents();
-        //System.out.println("Students extracted: " + students.size());
-
-        /*for (Student s: students) {
-            System.out.println(s.toString());
-        }*/
     }
 
     private static void ProcessCourses(){
-        CourseImport courseImporter = new CourseImport(filePath + "courses.csv");
+        CourseImport courseImporter = new CourseImport(_filePath + "courses.csv");
         courseImporter.process();
 
         semesters = courseImporter.getSemesters();
         courses = courseImporter.getCourses();
-
-        int count = 0;
-        for (Semester s: semesters) {
-            count += s.getCurrentCourses().size();
-        }
-
-        //System.out.println("Courses extracted: " + count);
-        //System.out.println("Unique Courses extracted: " + courses.size());
     }
 
     private static void ProcessInstructors(){
-        InstructorImport instructorImport = new InstructorImport(filePath + "instructors.csv");
+        InstructorImport instructorImport = new InstructorImport(_filePath + "instructors.csv");
         instructorImport.process();
 
         instructors = instructorImport.getInstructors();
-        /*System.out.println("Instructors extracted: " + instructors.size());
-
-        for (Instructor i: instructors) {
-            System.out.println(i.toString());
-        }*/
     }
 
     private static void ProcessAcademicRecords(){
-        AcademicRecordImport recordImporter = new AcademicRecordImport(filePath + "records.csv", semesters, students, instructors);
+        AcademicRecordImport recordImporter = new AcademicRecordImport(_filePath + "records.csv", semesters, students, instructors);
         recordImporter.process();
 
         records = recordImporter.getRecords();
-        /*System.out.println("Records extracted: " + records.size());
-
-        for (AcademicRecord a: records) {
-            System.out.println(a.toString());
-        }*/
     }
 
     private static int getOrphanStudentsCount(){
@@ -160,6 +141,7 @@ public class EntryPoint {
     }
 
     private static void PrintResults(){
+
         System.out.println(records.size());
         System.out.println(students.size());
         System.out.println(getOrphanStudentsCount());
@@ -171,5 +153,32 @@ public class EntryPoint {
         System.out.println(getCoursesCount(SemesterName.Fall));
         System.out.println(getCoursesCount(SemesterName.Spring));
         System.out.println(getCoursesCount(SemesterName.Summer));
+    }
+
+    private static void PrintVerbose(){
+        if (_verbose){
+            System.out.println("Students extracted: " + students.size());
+            for (Student s: students) {
+                System.out.println(s.toString());
+            }
+
+            int count = 0;
+            for (Semester s: semesters) {
+                count += s.getCurrentCourses().size();
+            }
+
+            System.out.println("Courses extracted: " + count);
+            System.out.println("Unique Courses extracted: " + courses.size());
+            System.out.println("Instructors extracted: " + instructors.size());
+            for (Instructor i: instructors) {
+                System.out.println(i.toString());
+            }
+
+            System.out.println("Records extracted: " + records.size());
+
+            for (AcademicRecord a: records) {
+                System.out.println(a.toString());
+            }
+        }
     }
 }

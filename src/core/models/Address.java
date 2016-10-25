@@ -36,6 +36,7 @@ public class Address {
         return sb.toString();
     }
 
+    // Setters - Getters
     public void setAddressLine1(String addressLine) {
         this.addressLine1 = addressLine;
     }
