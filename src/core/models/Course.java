@@ -1,9 +1,12 @@
 package cms.core.models;
 
 import cms.core.enumerations.CourseType;
+import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static java.util.UUID.randomUUID;
@@ -18,6 +21,9 @@ public class Course {
     private String description;
     private CourseType type;
     private Instructor instructor;
+
+    private List<Course> preRequisites;
+    private List<SeatAssignment> seatAssignment;
 
     public Course(String title, CourseType type, Instructor instructor, String id){
 
@@ -38,6 +44,23 @@ public class Course {
         this.title = title;
         this.type = type;
         this.instructor = instructor;
+
+        this.setPreRequisites(new ArrayList<Course>());
+        this.seatAssignment = new ArrayList<>();
+    }
+
+    @Override
+    public int hashCode() {
+        return new HashCodeBuilder(19, 59).append(this.courseId).append(this.description).toHashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Course)){ return false; }
+        if (obj == this){ return true; }
+
+        Course course = (Course) obj;
+        return new EqualsBuilder().append(this.courseId, course.courseId).append(this.description, course.description).isEquals();
     }
 
     public String getTitle(){
@@ -73,17 +96,35 @@ public class Course {
         }
     }
 
-    @Override
-    public int hashCode() {
-        return new HashCodeBuilder(19, 59).append(this.courseId).append(this.description).toHashCode();
+    public Integer getAvailableSeats() {
+        // TODO: Pull from SeatAssignment collection.
+        throw new NotImplementedException("Needs to pull from SeatAssignment collection.");
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Course)){ return false; }
-        if (obj == this){ return true; }
+    public void addSeats(SeatAssignment seatAssignment) {
+        this.seatAssignment.add(seatAssignment);
+    }
 
-        Course course = (Course) obj;
-        return new EqualsBuilder().append(this.courseId, course.courseId).append(this.description, course.description).isEquals();
+    public Integer getMaxTotalSeats() {
+        // TODO: Pull from SeatAssignment collection.
+        throw new NotImplementedException("Needs to pull from SeatAssignment collection.");
+    }
+
+    public List<Course> getPreRequisites() {
+        return this.preRequisites;
+    }
+
+    public void setPreRequisites(List<Course> preRequisites) {
+        this.preRequisites = preRequisites;
+    }
+
+    public void addPreRequisites(Course preRequisite) {
+        if (preRequisite == null){
+            return;
+        }
+
+        // TODO: Check if prereq already exist.
+
+        this.preRequisites.add(preRequisite);
     }
 }
