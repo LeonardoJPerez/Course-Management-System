@@ -2,13 +2,11 @@ package cms.main;
 
 import cms.core.enumerations.SemesterName;
 import cms.core.models.*;
-import cms.importer.AcademicRecordImport;
-import cms.importer.CourseImport;
-import cms.importer.InstructorImport;
-import cms.importer.StudentImport;
+import cms.importer.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Leonardo on 9/24/2016.
@@ -52,6 +50,23 @@ public class EntryPoint {
 
         semesters = courseImporter.getSemesters();
         courses = courseImporter.getCourses();
+
+        // Process Prerequisites.
+        PreRequisitesImport preRequisitesImporter = new PreRequisitesImport(_filePath + "records.csv");
+        preRequisitesImporter.process();
+
+        Map<String, List<String>> preRequisitesMapping = preRequisitesImporter.getPreRequisitesMapping();
+
+        // Process SeatAssignments
+        AssignmentsImport assignmentsImporter = new AssignmentsImport(_filePath + "assignments.csv");
+        assignmentsImporter.process();
+
+        List<SeatAssignment> seatAssignments = assignmentsImporter.getSeatAssignmentMap();
+
+        // ConsolidateData.
+        // For each course
+        //      aet its seat assignment.
+        //      set its prerequisites.
     }
 
     private static void ProcessInstructors(){

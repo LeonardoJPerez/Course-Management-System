@@ -22,7 +22,7 @@ public class InstructorImport  extends BaseImport {
     public void process() {
         try {
             List<String> lines = this.readFile();
-            this.instructors = new ArrayList<Instructor>();
+            this.instructors = new ArrayList<>();
 
             for (String l : lines) {
                 String[] values = l.split(",");
