@@ -2,9 +2,7 @@ package cms.core.models;
 
 import cms.core.enumerations.SemesterName;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Leonardo on 9/23/2016.
@@ -24,7 +22,7 @@ public class Semester {
 
         this.year = year;
         this.name = name;
-        this.courses = new ArrayList<Course>();
+        this.courses = new ArrayList<>();
     }
 
     public int getYear(){
@@ -68,13 +66,16 @@ public class Semester {
         return false;
     }
 
-    public List<Instructor> getActiveInstructors(){
-        List<Instructor> instructors = new ArrayList<Instructor>();
+    public List<String> getActiveInstructors(){
+        Set<String> ih = new HashSet<>();
+        List<String> il = new ArrayList<>();
 
         for (Course c: this.courses) {
-            instructors.add(c.getInstructor());
+            ih.addAll(c.getInstructors());
         }
 
-        return instructors;
+        il.addAll(ih);
+
+        return il;
     }
 }

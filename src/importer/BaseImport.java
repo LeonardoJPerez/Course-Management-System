@@ -24,11 +24,19 @@ public abstract class BaseImport {
     public abstract void process();
 
     protected List<String> readFile(){
-        List<String> lines = new ArrayList<String>();
+        List<String> lines = new ArrayList<>();
 
         try {
             Path filePath = Paths.get(this.importFilePath);
-            lines = Files.readAllLines(filePath, Charset.forName("ISO-8859-1"));
+            List<String> allLines = new ArrayList<>();
+            allLines = Files.readAllLines(filePath, Charset.forName("UTF-8"));
+
+            for (Integer i = 0; i < allLines.size(); i++){
+                if (allLines.get(i).length() > 0){
+                    lines.add(allLines.get(i));
+                }
+            }
+
         } catch (Exception e) {
             System.out.println(e);
         }

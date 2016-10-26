@@ -20,10 +20,10 @@ public class Instructor
         MessageFormat fmt;
         Object[] values;
         if (this.address == null) {
-            fmt = new MessageFormat("[{0}] {1} - Phone: {2} - Online: {3}");
+            fmt = new MessageFormat("[{0}] {1} - Phone: {2}");
             values = new Object[]{this.getUUID(), this.getFullName(), this.getPhone()};
         } else {
-            fmt = new MessageFormat("[{0}] {1} - Address: {2} - Phone: {3} - Online: {4}");
+            fmt = new MessageFormat("[{0}] {1} - Address: {2} - Phone: {3}");
             values = new Object[]{this.getUUID(), this.getFullName(), this.getAddress().getFullAddress(), this.getPhone()};
         }
 

@@ -5,6 +5,7 @@ import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -14,7 +15,8 @@ import static java.util.UUID.randomUUID;
 /**
  * Created by Leonardo on 9/23/2016.
  */
-public class Course {
+public class Course
+        implements Comparable {
 
     private String courseId;
     private String title;
@@ -23,7 +25,7 @@ public class Course {
     private Instructor instructor;
 
     private List<Course> preRequisites;
-    private List<SeatAssignment> seatAssignment;
+    private List<SeatAssignment> seatAssignments;
 
     public Course(String title, CourseType type, Instructor instructor, String id){
 
@@ -46,7 +48,7 @@ public class Course {
         this.instructor = instructor;
 
         this.setPreRequisites(new ArrayList<Course>());
-        this.seatAssignment = new ArrayList<>();
+        this.seatAssignments = new ArrayList<>();
     }
 
     @Override
@@ -63,6 +65,21 @@ public class Course {
         return new EqualsBuilder().append(this.courseId, course.courseId).append(this.description, course.description).isEquals();
     }
 
+    @Override
+    public String toString() {
+        MessageFormat fmt = new MessageFormat("[{0}] {1} - Type: {2} - PreReqs: {3} - Seat Capacity: {4} - # of Instructors: {5}");
+        Object[] values = new Object[]{
+                    this.getCourseId(),
+                    this.getFullName(),
+                    this.getCourseType(),
+                    this.getPreRequisites().size(),
+                    this.getMaxTotalSeats(),
+                    this.getInstructors().size()};
+
+
+        return fmt.format(values);
+    }
+
     public String getTitle(){
         return this.title;
     }
@@ -71,8 +88,15 @@ public class Course {
         return this.description;
     }
 
-    public Instructor getInstructor(){
-        return this.instructor;
+    public List<String> getInstructors(){
+        List<String> instructors = new ArrayList<>();
+
+        for (SeatAssignment s: this.seatAssignments)
+        {
+            instructors.add(s.getInstructorId());
+        }
+
+        return instructors;
     }
 
     public void setDescription(String description){
@@ -96,18 +120,26 @@ public class Course {
         }
     }
 
+    public void setSeatAssignment(List<SeatAssignment> seats) {
+        this.seatAssignments = seats;
+    }
+
+    public void addSeats(SeatAssignment seatAssignment) {
+        this.seatAssignments.add(seatAssignment);
+    }
+
     public Integer getAvailableSeats() {
         // TODO: Pull from SeatAssignment collection.
         throw new NotImplementedException("Needs to pull from SeatAssignment collection.");
     }
 
-    public void addSeats(SeatAssignment seatAssignment) {
-        this.seatAssignment.add(seatAssignment);
-    }
-
     public Integer getMaxTotalSeats() {
-        // TODO: Pull from SeatAssignment collection.
-        throw new NotImplementedException("Needs to pull from SeatAssignment collection.");
+        Integer count = 0;
+        for (SeatAssignment s: this.seatAssignments){
+            count += s.getCapacity();
+        }
+
+        return count;
     }
 
     public List<Course> getPreRequisites() {
@@ -126,5 +158,15 @@ public class Course {
         // TODO: Check if prereq already exist.
 
         this.preRequisites.add(preRequisite);
+    }
+
+    @Override
+    public int compareTo(Object c) {
+        Integer current = Integer.parseInt(this.getCourseId());
+        Integer compareToId = Integer.parseInt(((Course)c).getCourseId());
+
+        if (current.equals(compareToId)){ return 0; }
+        return current > compareToId ? 1 : -1;
+
     }
 }

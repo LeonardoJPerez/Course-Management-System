@@ -17,7 +17,7 @@ public class CatalogService {
     private Semester currentSemester;
 
     private CatalogService() {
-        this.semesters = new ArrayList<Semester>();
+        this.semesters = new ArrayList<>();
     }
 
     public static CatalogService getInstance() {
@@ -35,7 +35,6 @@ public class CatalogService {
     public void getCourse(String courseId){}
 
     public void getSemester(String semesterId){}
-
     public void searchCourse(String searchTerm){}
 
     public Semester getCurrentSemester(){
@@ -44,9 +43,7 @@ public class CatalogService {
     public void setCurrentSemester(Semester semester){
         this.currentSemester = semester;
     }
-    public void getSemesterCourses(String semesterId){
-
-    }
+    public void getSemesterCourses(String semesterId){}
     public void addSemesterCourses(Semester semester){}
 
     public List<Course> getOnlineCourses(Semester semester){

@@ -1,9 +1,8 @@
 package cms.importer;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import cms.core.models.Course;
+
+import java.util.*;
 
 /**
  * Created by Leonardo on 10/25/2016.
@@ -11,17 +10,20 @@ import java.util.Map;
 public class PreRequisitesImport
         extends BaseImport {
 
-    Map<String, List<String>> courseAndPrerequisitesMap;
+    private Map<String, List<String>> coursePrerequisitesMap;
+    private List<Course> coursesCatalog;
 
-    public PreRequisitesImport(String importFilePath) {
+    public PreRequisitesImport(String importFilePath, List<Course> courses) {
         super(importFilePath);
+
+        this.coursesCatalog = courses;
     }
 
     @Override
     public void process() {
         try {
             List<String> lines = this.readFile();
-            this.courseAndPrerequisitesMap = new HashMap<>();
+            this.coursePrerequisitesMap = new HashMap<>();
 
             for (String l : lines) {
                 String[] values = l.split(",");
@@ -31,10 +33,17 @@ public class PreRequisitesImport
                 String preReqId = values[0];
                 String courseId = values[1];
 
-                if (this.courseAndPrerequisitesMap.containsKey(courseId)){
+                // Verify Courses exist in catalog.
+                if (!this.courseExist(preReqId) || !this.courseExist(courseId)){
+                    continue;
+                }
+
+                // If courseId already added.
+                if (this.coursePrerequisitesMap.containsKey(courseId)){
                     boolean exist = false;
-                    for (String preReq: this.courseAndPrerequisitesMap.get(courseId)) {
-                        if (preReq == preReqId){
+                    // Check if prereq already added to avoid dupes.
+                    for (String preReq: this.coursePrerequisitesMap.get(courseId)) {
+                        if (preReq.equals(preReqId)){
                             exist = true;
                             break;
                         }
@@ -42,12 +51,12 @@ public class PreRequisitesImport
 
                     // Making sure we have a distinct list of prerequisites.
                     if (!exist){
-                        this.courseAndPrerequisitesMap.get(courseId).add(preReqId);
+                        this.coursePrerequisitesMap.get(courseId).add(preReqId);
                     }
 
                 }else{
-                    this.courseAndPrerequisitesMap.put(courseId, new ArrayList<String>());
-                    this.courseAndPrerequisitesMap.get(courseId).add(preReqId);
+                    this.coursePrerequisitesMap.put(courseId, new ArrayList<String>());
+                    this.coursePrerequisitesMap.get(courseId).add(preReqId);
                 }
             }
         } catch (Exception ex) {
@@ -55,7 +64,34 @@ public class PreRequisitesImport
         }
     }
 
-    public Map<String, List<String>> getPreRequisitesMapping() {
-        return this.courseAndPrerequisitesMap;
+    public Map<String, List<Course>> getPreRequisitesMapping() {
+        Map<String, List<Course>> m = new HashMap<>();
+
+        for (Map.Entry<String, List<String>> kvp: this.coursePrerequisitesMap.entrySet()) {
+            m.put(kvp.getKey(), new ArrayList<Course>());
+
+            for (String cId: kvp.getValue()) {
+                // Courses here have been already checked against existing.
+                // this.getCourse() method should not return null for a given course Id in this step.
+                m.get(kvp.getKey()).add(this.getCourse(cId));
+            }
+        }
+
+        return m;
+    }
+
+    // Helper methods.
+    private boolean courseExist(String courseId){
+        return this.getCourse(courseId) != null;
+    }
+
+    private Course getCourse(String courseId){
+        for (Course c: this.coursesCatalog) {
+            if (c.getCourseId().equals(courseId)){
+                return c;
+            }
+        }
+
+        return null;
     }
 }

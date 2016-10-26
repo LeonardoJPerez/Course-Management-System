@@ -7,12 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00ee1c81-f7ca-4b0b-bf35-61b737e362a8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/core/models/SeatAssignment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/importer/AssignmentsImport.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/importer/PreRequisitesImport.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/enumerations/CourseType.java" afterPath="$PROJECT_DIR$/src/core/enumerations/CourseType.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/models/Course.java" afterPath="$PROJECT_DIR$/src/core/models/Course.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/importer/InstructorImport.java" afterPath="$PROJECT_DIR$/src/importer/InstructorImport.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/models/Instructor.java" afterPath="$PROJECT_DIR$/src/core/models/Instructor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/models/Semester.java" afterPath="$PROJECT_DIR$/src/core/models/Semester.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/core/services/CatalogService.java" afterPath="$PROJECT_DIR$/src/core/services/CatalogService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/importer/AssignmentsImport.java" afterPath="$PROJECT_DIR$/src/importer/AssignmentsImport.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/importer/BaseImport.java" afterPath="$PROJECT_DIR$/src/importer/BaseImport.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/importer/PreRequisitesImport.java" afterPath="$PROJECT_DIR$/src/importer/PreRequisitesImport.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/EntryPoint.java" afterPath="$PROJECT_DIR$/src/main/EntryPoint.java" />
     </list>
     <ignored path="Course-Management-System.iws" />
@@ -40,14 +43,24 @@
       <file leaf-file-name="PreRequisitesImport.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/importer/PreRequisitesImport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="54" column="9" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
+            <state relative-caret-position="631">
+              <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#344#345#0" expanded="true" />
-                <element signature="e#381#382#0" expanded="true" />
-                <element signature="e#1828#1829#0" expanded="true" />
-                <element signature="e#1881#1882#0" expanded="true" />
+                <element signature="e#2790#2791#0" expanded="true" />
+                <element signature="e#2845#2846#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseImport.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/importer/BaseImport.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="393">
+              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,12 +69,14 @@
       <file leaf-file-name="AssignmentsImport.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/importer/AssignmentsImport.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="53" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
+            <state relative-caret-position="166">
+              <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#420#421#0" expanded="true" />
-                <element signature="method#process#0;class#AssignmentsImport#0" expanded="false" />
+                <element signature="e#3158#3159#0" expanded="true" />
+                <element signature="e#3213#3214#0" expanded="true" />
+                <element signature="e#3463#3464#0" expanded="true" />
+                <element signature="e#3522#3523#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -70,18 +85,15 @@
       <file leaf-file-name="Course.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/core/models/Course.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-457">
-              <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+            <state relative-caret-position="556">
+              <caret line="170" column="5" selection-start-line="170" selection-start-column="5" selection-end-line="170" selection-end-column="5" />
               <folding>
                 <element signature="method#hashCode#0;class#Course#0" expanded="false" />
                 <element signature="method#equals#0;class#Course#0" expanded="false" />
+                <element signature="method#getInstructors#0;class#Course#0" expanded="false" />
                 <element signature="method#getFullName#0;class#Course#0" expanded="false" />
-                <element signature="e#2748#2749#0" expanded="true" />
-                <element signature="e#2803#2804#0" expanded="true" />
-                <element signature="e#3042#3043#0" expanded="true" />
-                <element signature="e#3083#3084#0" expanded="true" />
-                <element signature="e#3147#3148#0" expanded="true" />
-                <element signature="e#3197#3198#0" expanded="true" />
+                <element signature="method#getAvailableSeats#0;class#Course#0" expanded="false" />
+                <element signature="method#getMaxTotalSeats#0;class#Course#0" expanded="false" />
                 <element signature="method#addPreRequisites#0;class#Course#0" expanded="false" />
               </folding>
             </state>
@@ -91,9 +103,10 @@
       <file leaf-file-name="EntryPoint.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/EntryPoint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="68" column="38" selection-start-line="68" selection-start-column="38" selection-end-line="68" selection-end-column="38" />
+            <state relative-caret-position="238">
+              <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
               <folding>
+                <element signature="e#199#243#0" expanded="true" />
                 <element signature="method#ProcessStudents#0;class#EntryPoint#0" expanded="false" />
                 <element signature="method#ProcessInstructors#0;class#EntryPoint#0" expanded="false" />
                 <element signature="method#ProcessAcademicRecords#0;class#EntryPoint#0" expanded="false" />
@@ -102,7 +115,6 @@
                 <element signature="method#getOrphanCoursesCount#0;class#EntryPoint#0" expanded="false" />
                 <element signature="method#getCoursesCount#0;class#EntryPoint#0" expanded="false" />
                 <element signature="method#PrintResults#0;class#EntryPoint#0" expanded="false" />
-                <element signature="method#PrintVerbose#0;class#EntryPoint#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -155,30 +167,30 @@
         <option value="$PROJECT_DIR$/src/EntryPoint .java" />
         <option value="$PROJECT_DIR$/src/main/EntryPoint .java" />
         <option value="$PROJECT_DIR$/src/core/enumerations/CourseGrade.java" />
-        <option value="$PROJECT_DIR$/src/core/enumerations/CourseType.java" />
         <option value="$PROJECT_DIR$/src/core/services/AcademicRecordService.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/importer/EmployeeImport.java" />
         <option value="$PROJECT_DIR$/src/core/models/Administrator.java" />
         <option value="$PROJECT_DIR$/src/core/models/Student.java" />
-        <option value="$PROJECT_DIR$/src/core/models/Instructor.java" />
         <option value="$PROJECT_DIR$/src/core/enumerations/SemesterName.java" />
-        <option value="$PROJECT_DIR$/src/core/models/Semester.java" />
         <option value="$PROJECT_DIR$/src/importer/AcademicRecordImport.java" />
         <option value="$PROJECT_DIR$/src/core/models/AcademicRecord.java" />
         <option value="$PROJECT_DIR$/src/importer/StudentImport.java" />
-        <option value="$PROJECT_DIR$/src/importer/BaseImport.java" />
         <option value="$PROJECT_DIR$/src/importer/CourseImport.java" />
         <option value="$PROJECT_DIR$/src/core/models/Address.java" />
         <option value="$PROJECT_DIR$/src/core/models/User.java" />
         <option value="$PROJECT_DIR$/src/core/models/WorkSchedule.java" />
-        <option value="$PROJECT_DIR$/src/core/services/CatalogService.java" />
         <option value="$PROJECT_DIR$/src/importer/InstructorImport.java" />
-        <option value="$PROJECT_DIR$/src/importer/PreRequisitesImport.java" />
         <option value="$PROJECT_DIR$/src/core/models/SeatAssignment.java" />
-        <option value="$PROJECT_DIR$/src/importer/AssignmentsImport.java" />
-        <option value="$PROJECT_DIR$/src/core/models/Course.java" />
         <option value="$PROJECT_DIR$/src/main/EntryPoint2.java" />
+        <option value="$PROJECT_DIR$/src/core/services/CatalogService.java" />
+        <option value="$PROJECT_DIR$/src/core/enumerations/CourseType.java" />
+        <option value="$PROJECT_DIR$/src/importer/BaseImport.java" />
+        <option value="$PROJECT_DIR$/src/importer/PreRequisitesImport.java" />
+        <option value="$PROJECT_DIR$/src/importer/AssignmentsImport.java" />
+        <option value="$PROJECT_DIR$/src/core/models/Semester.java" />
+        <option value="$PROJECT_DIR$/src/core/models/Instructor.java" />
+        <option value="$PROJECT_DIR$/src/core/models/Course.java" />
         <option value="$PROJECT_DIR$/src/main/EntryPoint.java" />
       </list>
     </option>
@@ -277,22 +289,8 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Course-Management-System" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Course-Management-System" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
+              <option name="myItemId" value="importer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -314,7 +312,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Course-Management-System" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Course-Management-System" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -787,7 +803,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="cms.main.EntryPoint" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="-v" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -829,12 +845,12 @@
       <workItem from="1476214238322" duration="8000" />
       <workItem from="1476903877788" duration="70000" />
       <workItem from="1476904070455" duration="1343000" />
-      <workItem from="1477393768530" duration="9832000" />
+      <workItem from="1477393768530" duration="20960000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91968000" />
+    <option name="totallyTimeSpent" value="103096000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -867,7 +883,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15565032" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.49434572" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997833" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3997833" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5056543" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -936,7 +952,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="67" />
+      <option name="time" value="85" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1122,13 +1138,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/enumerations/CourseType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/enumerations/SemesterName.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -1178,20 +1187,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/models/Instructor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="18" column="26" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/models/Semester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/services/AcademicRecordService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1199,32 +1194,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/core/services/CatalogService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="48" column="5" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/models/Address.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="97" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/importer/AcademicRecordImport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="71" column="48" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/importer/BaseImport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1243,14 +1216,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
           <caret line="24" column="45" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/importer/StudentImport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -1276,32 +1241,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/importer/AssignmentsImport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="53" selection-start-line="17" selection-start-column="53" selection-end-line="17" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#420#421#0" expanded="true" />
-            <element signature="method#process#0;class#AssignmentsImport#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/importer/PreRequisitesImport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="54" column="9" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#344#345#0" expanded="true" />
-            <element signature="e#381#382#0" expanded="true" />
-            <element signature="e#1828#1829#0" expanded="true" />
-            <element signature="e#1881#1882#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/EntryPoint2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="580">
@@ -1310,20 +1249,108 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/importer/AcademicRecordImport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="18" column="41" selection-start-line="17" selection-start-column="2" selection-end-line="18" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/services/CatalogService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="55" column="1" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
+          <folding>
+            <element signature="method#getInstance#0;class#CatalogService#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/enumerations/CourseType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/importer/StudentImport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="e#342#343#0" expanded="true" />
+            <element signature="e#379#380#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/importer/BaseImport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/importer/PreRequisitesImport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="631">
+          <caret line="89" column="0" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2790#2791#0" expanded="true" />
+            <element signature="e#2845#2846#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/models/Semester.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="76" column="20" selection-start-line="76" selection-start-column="20" selection-end-line="76" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/core/models/Instructor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+          <folding>
+            <element signature="method#toString#0;class#Instructor#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/importer/AssignmentsImport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3158#3159#0" expanded="true" />
+            <element signature="e#3213#3214#0" expanded="true" />
+            <element signature="e#3463#3464#0" expanded="true" />
+            <element signature="e#3522#3523#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/core/models/Course.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-457">
-          <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+        <state relative-caret-position="556">
+          <caret line="170" column="5" selection-start-line="170" selection-start-column="5" selection-end-line="170" selection-end-column="5" />
           <folding>
             <element signature="method#hashCode#0;class#Course#0" expanded="false" />
             <element signature="method#equals#0;class#Course#0" expanded="false" />
+            <element signature="method#getInstructors#0;class#Course#0" expanded="false" />
             <element signature="method#getFullName#0;class#Course#0" expanded="false" />
-            <element signature="e#2748#2749#0" expanded="true" />
-            <element signature="e#2803#2804#0" expanded="true" />
-            <element signature="e#3042#3043#0" expanded="true" />
-            <element signature="e#3083#3084#0" expanded="true" />
-            <element signature="e#3147#3148#0" expanded="true" />
-            <element signature="e#3197#3198#0" expanded="true" />
+            <element signature="method#getAvailableSeats#0;class#Course#0" expanded="false" />
+            <element signature="method#getMaxTotalSeats#0;class#Course#0" expanded="false" />
             <element signature="method#addPreRequisites#0;class#Course#0" expanded="false" />
           </folding>
         </state>
@@ -1331,9 +1358,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/EntryPoint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="68" column="38" selection-start-line="68" selection-start-column="38" selection-end-line="68" selection-end-column="38" />
+        <state relative-caret-position="238">
+          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
           <folding>
+            <element signature="e#199#243#0" expanded="true" />
             <element signature="method#ProcessStudents#0;class#EntryPoint#0" expanded="false" />
             <element signature="method#ProcessInstructors#0;class#EntryPoint#0" expanded="false" />
             <element signature="method#ProcessAcademicRecords#0;class#EntryPoint#0" expanded="false" />
@@ -1342,7 +1370,6 @@
             <element signature="method#getOrphanCoursesCount#0;class#EntryPoint#0" expanded="false" />
             <element signature="method#getCoursesCount#0;class#EntryPoint#0" expanded="false" />
             <element signature="method#PrintResults#0;class#EntryPoint#0" expanded="false" />
-            <element signature="method#PrintVerbose#0;class#EntryPoint#0" expanded="false" />
           </folding>
         </state>
       </provider>

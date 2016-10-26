@@ -5,5 +5,6 @@ package cms.core.enumerations;
  */
 public enum  CourseType {
     Online,
-    OnCampus
+    OnCampus,
+    OnlineAndOnCampus
 }

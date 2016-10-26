@@ -1,5 +1,7 @@
 package cms.importer;
 
+import cms.core.models.Course;
+import cms.core.models.Instructor;
 import cms.core.models.SeatAssignment;
 
 import java.util.ArrayList;
@@ -13,10 +15,15 @@ import java.util.Map;
 public class AssignmentsImport
         extends BaseImport{
 
-    Map<String, HashMap<String, Integer>> seatAssigmentsMap;
+    Map<String, HashMap<String, Integer>> seatAssigmentsMap; // Dictionary of CourseID => [InstructorID, SeatCount]
+    private List<Course> coursesCatalog;
+    private List<Instructor> instructors;
 
-    public AssignmentsImport(String importFilePath) {
+    public AssignmentsImport(String importFilePath, List<Course> courses, List<Instructor> instructors) {
         super(importFilePath);
+
+        this.coursesCatalog = courses;
+        this.instructors = instructors;
     }
 
     @Override
@@ -34,10 +41,15 @@ public class AssignmentsImport
                 String courseId = values[1];
                 Integer seatCount = Integer.parseInt(values[2]);
 
+                // Verify Instructors and courses exist.
+                if (!this.courseExist(courseId) || !this.instructorExist(instructorId)){
+                    continue;
+                }
+
                 if (this.seatAssigmentsMap.containsKey(courseId)){
                     boolean exist = false;
                     for (Map.Entry<String, Integer> kvp: this.seatAssigmentsMap.get(courseId).entrySet()) {
-                        if (kvp.getKey() == instructorId){
+                        if (kvp.getKey().equals(instructorId)){
                             kvp.setValue(kvp.getValue() + seatCount);
                             exist = true;
                             break;
@@ -57,13 +69,44 @@ public class AssignmentsImport
         }
     }
 
-    public List<SeatAssignment> getSeatAssignmentMap() {
-        List<SeatAssignment> assignments = new ArrayList<>();
+    public Map<String, List<SeatAssignment>> getSeatAssignmentMap() {
+        Map<String, List<SeatAssignment>> assignmentsPerCourse = new HashMap<>();
+
         for (Map.Entry<String, HashMap<String, Integer>> courseMap: this.seatAssigmentsMap.entrySet()) {
+            String courseId = courseMap.getKey();
+            assignmentsPerCourse.put(courseId, new ArrayList<SeatAssignment>());
+
             for (Map.Entry<String, Integer> kvp: courseMap.getValue().entrySet()) {
-                assignments.add(new SeatAssignment(courseMap.getKey(), kvp.getKey(), kvp.getValue()));
+                assignmentsPerCourse.get(courseId).add(new SeatAssignment(courseId, kvp.getKey(), kvp.getValue()));
             }
         }
-        return assignments;
+
+        return assignmentsPerCourse;
     }
+
+    // Helper methods.
+    private boolean courseExist(String courseId){
+        return this.getCourse(courseId) != null;
+    }
+
+    private Course getCourse(String courseId){
+        for (Course c: this.coursesCatalog) {
+            if (c.getCourseId().equals(courseId)){ return c; }
+        }
+
+        return null;
+    }
+
+    private boolean instructorExist(String courseId){
+        return this.getInstructor(courseId) != null;
+    }
+
+    private Instructor getInstructor(String instructorId){
+        for (Instructor i: this.instructors) {
+            if (i.getUUID().equals(instructorId)){ return i; }
+        }
+
+        return null;
+    }
+
 }
