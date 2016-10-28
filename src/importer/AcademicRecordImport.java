@@ -1,9 +1,9 @@
 package cms.importer;
 
 import cms.core.enumerations.CourseGrade;
-import cms.core.enumerations.CourseType;
-import cms.core.enumerations.SemesterName;
 import cms.core.models.*;
+import cms.core.models.users.Instructor;
+import cms.core.models.users.Student;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class AcademicRecordImport extends BaseImport {
     public AcademicRecordImport(String importFilePath, List<Semester> semesters, List<Student> students, List<Instructor> instructors) {
         super(importFilePath);
 
-        this.records = new ArrayList<AcademicRecord>();
+        this.records = new ArrayList<>();
 
         this.semesters = semesters;
         this.students = students;

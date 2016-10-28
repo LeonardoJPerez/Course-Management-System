@@ -1,9 +1,11 @@
-package cms.core.models;
+package cms.core.models.users;
+
+import cms.core.models.Address;
+import cms.core.models.WorkSchedule;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by Leonardo on 9/19/2016.

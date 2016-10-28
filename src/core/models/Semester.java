@@ -14,9 +14,9 @@ public class Semester {
     private SemesterName name;
 
 
-    public Semester(SemesterName name, int year){
+    public Semester(SemesterName name, int year) {
         Calendar now = Calendar.getInstance();
-        if (now.get(Calendar.YEAR) < year){
+        if (now.get(Calendar.YEAR) < year) {
             throw new IllegalArgumentException("Year cannot be less than current year.");
         }
 
@@ -25,40 +25,40 @@ public class Semester {
         this.courses = new ArrayList<>();
     }
 
-    public int getYear(){
+    public int getYear() {
         return this.year;
     }
 
-    public SemesterName getSemesterName(){
+    public SemesterName getSemesterName() {
         return this.name;
     }
 
-    public String getFullName(){
-        if (this.getSemesterName() == SemesterName.NoSemester){
+    public String getFullName() {
+        if (this.getSemesterName() == SemesterName.NoSemester) {
             return "N/A";
-        }else {
+        } else {
             return this.name.toString() + "/" + this.year;
         }
     }
 
-    public List<Course> getCurrentCourses(){
+    public List<Course> getCurrentCourses() {
         return this.courses;
     }
 
-    public boolean addCourse(Course newCourse){
-         if(newCourse == null){
-             throw new IllegalArgumentException("Course cannot be null.");
-         }
+    public boolean addCourse(Course newCourse) {
+        if (newCourse == null) {
+            throw new IllegalArgumentException("Course cannot be null.");
+        }
 
-         boolean exists = false;
-        for (Course c: this.courses) {
-            if (newCourse.getCourseId() == c.getCourseId()){
+        boolean exists = false;
+        for (Course c : this.courses) {
+            if (newCourse.getCourseId() == c.getCourseId()) {
                 exists = true;
                 break;
             }
         }
 
-        if (!exists){
+        if (!exists) {
             this.courses.add(newCourse);
             return true;
         }
@@ -66,11 +66,17 @@ public class Semester {
         return false;
     }
 
-    public List<String> getActiveInstructors(){
+    public void addCourses(List<Course> courses) {
+        for (Course c: courses) {
+            this.addCourse(c);
+        }
+    }
+
+    public List<String> getActiveInstructors() {
         Set<String> ih = new HashSet<>();
         List<String> il = new ArrayList<>();
 
-        for (Course c: this.courses) {
+        for (Course c : this.courses) {
             ih.addAll(c.getInstructors());
         }
 

@@ -1,6 +1,7 @@
 package cms.core.models;
 
 import cms.core.enumerations.CourseType;
+import cms.core.models.users.Instructor;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -46,6 +47,7 @@ public class Course
         this.title = title;
         this.type = type;
         this.instructor = instructor;
+        this.preRequisites = new ArrayList<>();
 
         this.setPreRequisites(new ArrayList<Course>());
         this.seatAssignments = new ArrayList<>();
@@ -128,18 +130,14 @@ public class Course
         this.seatAssignments.add(seatAssignment);
     }
 
-    public Integer getAvailableSeats() {
-        // TODO: Pull from SeatAssignment collection.
-        throw new NotImplementedException("Needs to pull from SeatAssignment collection.");
-    }
-
     public Integer getMaxTotalSeats() {
         Integer count = 0;
         for (SeatAssignment s: this.seatAssignments){
             count += s.getCapacity();
         }
 
-        return count;
+        // Return -1 to denote no seat limit for this course.
+        return count == 0 ? -1 : count;
     }
 
     public List<Course> getPreRequisites() {

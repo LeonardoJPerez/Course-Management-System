@@ -1,7 +1,8 @@
-package cms.core.models;
+package cms.core.models.users;
+
+import cms.core.models.Address;
 
 import java.text.MessageFormat;
-import java.util.UUID;
 
 /**
  * Created by Leonardo on 9/23/2016.

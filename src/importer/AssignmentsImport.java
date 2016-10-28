@@ -1,7 +1,7 @@
 package cms.importer;
 
 import cms.core.models.Course;
-import cms.core.models.Instructor;
+import cms.core.models.users.Instructor;
 import cms.core.models.SeatAssignment;
 
 import java.util.ArrayList;

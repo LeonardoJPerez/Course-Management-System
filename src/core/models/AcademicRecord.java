@@ -1,6 +1,8 @@
 package cms.core.models;
 
 import cms.core.enumerations.CourseGrade;
+import cms.core.models.users.Instructor;
+import cms.core.models.users.Student;
 
 import java.text.MessageFormat;
 import java.util.UUID;
@@ -100,11 +102,18 @@ public class AcademicRecord {
 
     @Override
     public String toString() {
+        MessageFormat   fmt = new MessageFormat("{0},  {1},  {2},  {3},  {4}");
+        Object[]    values = new Object[]{this.getStudent().getUUID(), this.getCourse().getCourseId(), this.getInstructor().getUUID(), this.getComments(), this.getGrade()};
+
+        return fmt.format(values);
+    }
+
+    public String toStringVerbose() {
         MessageFormat fmt;
         Object[] values;
         if (this.comments != null && this.comments.length() > 0) {
             fmt = new MessageFormat("[{0}] Course ID: {1} - Student ID: {2} - Instructor ID: {3} - Grade: {4} - Comments: {5}");
-            values = new Object[]{this.getId(), this.getCourse().getCourseId(), this.getStudent().getUUID(), this.getInstructor().getUUID(), this.getGrade(), this.comments};
+            values = new Object[]{this.getId(), this.getCourse().getCourseId(), this.getStudent().getUUID(), this.getInstructor().getUUID(), this.getGrade(), this.getComments()};
         } else {
             fmt = new MessageFormat("[{0}] Course ID: {1} - Student ID: {2} - Instructor ID: {3} - Grade: {4}");
             values = new Object[]{this.getId(), this.getCourse().getCourseId(), this.getStudent().getUUID(), this.getInstructor().getUUID(), this.getGrade()};

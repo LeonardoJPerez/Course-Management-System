@@ -1,11 +1,10 @@
 package cms.importer;
 
 import cms.core.models.Address;
-import cms.core.models.Student;
+import cms.core.models.users.Student;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Created by Leonardo on 9/24/2016.

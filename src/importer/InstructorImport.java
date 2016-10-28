@@ -1,8 +1,7 @@
 package cms.importer;
 
 import cms.core.models.Address;
-import cms.core.models.Instructor;
-import cms.core.models.Student;
+import cms.core.models.users.Instructor;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,11 @@
 package cms.core.services;
 
 import cms.core.models.AcademicRecord;
-import cms.core.models.Student;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * Created by Leonardo on 9/24/2016.
@@ -12,10 +13,11 @@ import java.util.List;
 public class AcademicRecordService {
 
     private static AcademicRecordService _instance;
-    private List<AcademicRecord> records;
+    private Queue<AcademicRecord> records;
 
     private AcademicRecordService() {
-        this.records = new ArrayList<AcademicRecord>();
+
+        this.records = new ArrayDeque<>();
     }
 
     public static AcademicRecordService getInstance() {
@@ -58,20 +60,24 @@ public class AcademicRecordService {
         return updated;
     }
 
-    public List<AcademicRecord> getRecordsByStudents(Student student) {
-        if (student == null) {
-            throw new IllegalArgumentException("Student cannot be null.");
+    public List<AcademicRecord> getRecordsByStudent(String studentID) {
+        if (studentID == null) {
+            throw new IllegalArgumentException("Student ID cannot be null.");
         }
 
         // Search student records.
-        List<AcademicRecord> studentRecords = new ArrayList<AcademicRecord>();
+        List<AcademicRecord> studentRecords = new ArrayList<>();
         for (AcademicRecord r: this.records) {
-            if (r.getStudent().getUUID() == student.getUUID()){
+            if (r.getStudent().getUUID().equals(studentID)){
                 studentRecords.add(r);
             }
         }
 
         return studentRecords;
+    }
+
+    public Queue<AcademicRecord> getRecords(){
+        return this.records;
     }
 
     private boolean exists(AcademicRecord record) {

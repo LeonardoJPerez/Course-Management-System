@@ -1,6 +1,4 @@
-package cms.core.models;
-
-import java.util.UUID;
+package cms.core.models.users;
 
 /**
  * Created by Leonardo on 9/24/2016.

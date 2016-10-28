@@ -21,7 +21,7 @@ public class CourseImport extends BaseImport {
         Calendar now = Calendar.getInstance();
         int year = now.get(Calendar.YEAR);
 
-        semesters = new ArrayList<Semester>();
+        semesters = new ArrayList<>();
         semesters.add(new Semester(SemesterName.Fall, year));
         semesters.add(new Semester(SemesterName.Winter, year));
         semesters.add(new Semester(SemesterName.Spring, year));
@@ -47,6 +47,7 @@ public class CourseImport extends BaseImport {
                 String name = values[1];
 
                 Course newCourse = new Course(name, CourseType.Online, null, id);
+
                 // Extract semesters
                 // Check for no semester
                 if (values.length == 2){
@@ -87,27 +88,11 @@ public class CourseImport extends BaseImport {
             Semester s = this.semesters.get(i);
             s.addCourse(newCourse);
             this.semesters.set(i, s);
+            break;
         }
     }
 
     public List<Semester> getSemesters() {
         return this.semesters;
-    }
-
-    public List<Course> getCourses() {
-        List<Course> courses = new ArrayList<Course>();
-
-        for (Semester s: this.semesters) {
-            courses.addAll(s.getCurrentCourses());
-        }
-
-        List<Course> courses2 = new ArrayList<Course>();
-        for (Course c: courses) {
-            if (!courses2.contains(c)){
-                courses2.add(c);
-            }
-        }
-
-        return courses2;
     }
 }
